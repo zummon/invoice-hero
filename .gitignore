@@ -1,0 +1,11 @@
+# Svelte
+node_modules/
+public/build/
+dist/
+.DS_Store
+package-lock.json
+yarn.lock
+
+# Tailwind CSS
+.postcss-cache/
+.cache/

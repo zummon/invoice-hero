@@ -1,0 +1,18 @@
+{
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {},
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.3",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "svelte": "^3.57.0",
+    "tailwindcss": "^3.0.5",
+    "vite": "^4.2.1"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
