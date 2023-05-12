@@ -3,6 +3,7 @@ import "./style.css";
 
 let data = {
   "": {
+    "": "English",
     label: {
       "": {
         title: "Invoice",
@@ -69,6 +70,7 @@ let data = {
   },
 
   th: {
+    "": "ภาษาไทย",
     label: {
       "": {
         title: "ใบแจ้งหนี้",

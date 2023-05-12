@@ -12,7 +12,6 @@
 	  }
 	  return `${q.currency} ${number.toLocaleString(undefined, {
 	    minimumFractionDigits: 2,
-	    maximumFractionDigits: 2
 	  })}`;
 	};
 	const qty = number => {
@@ -20,7 +19,9 @@
 	  if (number === 0 || isNaN(number)) {
 	    return "";
 	  }
-	  return number;
+	  return number.toLocaleString(undefined, {
+	    minimumFractionDigits: 0,
+	  });
 	};
 	const rate = rate => {
 	  rate = Number(rate) * 100;
@@ -83,14 +84,14 @@
 {#each Object.keys(data) as lng, i (`lang-${i}`)}
 		<button class="block duration-300 p-4 {q.lang === lng ? "bg-red-600 text-gray-100" : "text-gray-900 bg-gray-100 hover:bg-red-600 focus:bg-red-600 hover:text-gray-100 focus:text-gray-100"}" on:click={() => {
 			q.lang = lng
-			}}>
-			{lng =='th' ? 'ไทย' : 'Eng'}
+		}}>
+			{data[lng]['']}
 		</button>
 	{/each}
 	{#each Object.keys(data[q.lang].label) as dc, i (`doc-${i}`)}
 		<button class="block duration-300 p-4 {q.doc === dc ? "bg-red-600 text-gray-100" : "text-gray-900 bg-gray-100 hover:bg-red-600 focus:bg-red-600 hover:text-gray-100 focus:text-gray-100"}" on:click={() => {
 			q.doc = dc
-			}}>
+		}}>
 			{data[q.lang].label[dc].title}
 		</button>
 	{/each}
@@ -269,7 +270,7 @@
 </div>
 
 <div class="flex flex-wrap justify-center items-center my-4 print:hidden">
-	<button class="block duration-300 p-4 text-gray-900 bg-gray-100 hover:bg-red-600 focus:bg-red-600 hover:text-gray-100 focus:text-gray-100" on:click={() => window.print()}>
+	<button class="block duration-300 p-4 text-gray-100 bg-red-600 hover:bg-gray-100 focus:bg-gray-100 hover:text-gray-900 focus:text-gray-900" on:click={() => {window.print()}}>
 		Print
 	</button>
 </div>
