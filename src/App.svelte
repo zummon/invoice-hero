@@ -5,14 +5,16 @@
 	let l = data[""].label[""];
 	let q = data[""].q;
 
+	let saveink = false
+
 	const price = number => {
-	  number = Number(number);
-	  if (number === 0 || isNaN(number)) {
-	    return "";
-	  }
-	  return `${q.currency} ${number.toLocaleString(undefined, {
-	    minimumFractionDigits: 2,
-	  })}`;
+		number = Number(number);
+		if (number === 0 || isNaN(number)) {
+			return "";
+		}
+		return `${q.currency} ${number.toLocaleString(undefined, {
+			minimumFractionDigits: 2,
+		})}`;
 	};
 	const qty = number => {
 	  number = Number(number);
@@ -98,7 +100,7 @@
 </div>
 
 <div class="font-sans bg-white text-gray-900 max-w-[60rem] mx-auto print:max-w-none print:mx-0">
-	<div class="flex px-4 py-8 bg-red-500 text-white font-bold">
+	<div class="flex px-4 py-8 font-bold {saveink ? '' : 'text-white bg-red-500'}">
 		<div class="">
 			<h1 class="text-5xl mb-4">{l.title}</h1>
 			<div class="grid grid-cols-2 gap-2">
@@ -272,9 +274,13 @@
 <div class="flex flex-wrap justify-center items-center my-4 print:hidden gap-4">
 	<label>
 		<span>Currency</span>
-		<input class="border border-red-600 w-12" bind:value={q.currency} />
+		<input class="border border-red-600 w-12" type="text" bind:value={q.currency} />
 	</label>
 	<button class="block duration-300 p-4 text-gray-100 bg-red-600 hover:bg-gray-100 focus:bg-gray-100 hover:text-gray-900 focus:text-gray-900" on:click={() => {window.print()}}>
 		Print
 	</button>
+	<label>
+		<span>Save ink</span>
+		<input class="accent-red-600" type="checkbox" bind:checked={saveink} />
+	</label>
 </div>
